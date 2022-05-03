@@ -1,5 +1,6 @@
 import Newton_Cotes
 import numpy as np
+from sympy import *
 
 
 def menu(funct):
@@ -14,7 +15,10 @@ def menu(funct):
         interval_n = input()
         print("Podaj dokładność: ")
         epsilon = input()
-        Newton_Cotes.Simpson_method(float(epsilon), float(interval_0), float(interval_n), funct)
+        result = Newton_Cotes.Simpson_method(float(epsilon), float(interval_0), float(interval_n), funct)
+        print("Całka wynosi: " + str(result))
+        plus, minus = Newton_Cotes.function_limit(funct)
+        print("Granica funkcji w -oo wynosi: " + str(minus) + ", a w +oo: " + str(plus))
     elif method == "2":
         print()
 
@@ -25,7 +29,7 @@ def main():
         print("Wybierz funkcje: ")
         print("0. Wyjście")
         print("1. sin(x)")
-        print("2. cos(x)")
+        print("2. cos(2x)")
         print("3. ")
         print("4. ")
         print("5. ")
@@ -36,7 +40,7 @@ def main():
             funct = "np.sin(x)"
             menu(funct)
         elif choice == "2":
-            funct = "np.cos(x)"
+            funct = "np.cos(2*x)"
             menu(funct)
 
         elif choice == "3":
