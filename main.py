@@ -1,12 +1,13 @@
 import Newton_Cotes
 import numpy as np
 from sympy import *
+import Gauss_Hermit
 
 
 def menu(funct):
     print("Wybierz metode całkowania numerycznego: ")
     print("1. Newtona-Cotesa opartą na trzech węzłach")
-    print("2. Gaussa -Hermite'a")
+    print("2. Gaussa-Hermite'a")
     method = input()
     if method == "1":
         print("Podaj przedział, od: ")
@@ -20,7 +21,10 @@ def menu(funct):
         plus, minus = Newton_Cotes.function_limit(funct)
         print("Granica funkcji w -oo wynosi: " + str(minus) + ", a w +oo: " + str(plus))
     elif method == "2":
-        print()
+        print("Podaj ilość wezłów: [2,3,4,5]")
+        n = input()
+        result = Gauss_Hermit.Gaus_Hermit_method(funct, int(n))
+        print("Całka dla " + str(n) + " węzłów wynosi: " + str(result))
 
 
 def main():
@@ -28,26 +32,27 @@ def main():
     while (check):
         print("Wybierz funkcje: ")
         print("0. Wyjście")
-        print("1. sin(x)")
+        print("1. Wybrana")
         print("2. cos(2x)")
-        print("3. ")
-        print("4. ")
-        print("5. ")
+        print("3. x**2+3")
+        print("4. log(x+3) * 4")
         choice = input()
         if choice == "0":
             check = False
         elif choice == "1":
-            funct = "np.sin(x)"
+            print("Podaj funkcje: ")
+            funct = input()
             menu(funct)
-        elif choice == "2":
+        elif choice == "1":
             funct = "np.cos(2*x)"
             menu(funct)
 
+        elif choice == "2":
+            funct = "x**2+3"
+            menu(funct)
         elif choice == "3":
-            funct = ""
-
-        elif choice == "4":
-            funct = ""
+            funct = "np.log(x+3) * 4"
+            menu(funct)
         else:
             print("Zły numer!")
 
