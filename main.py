@@ -1,3 +1,7 @@
+import Newton_Cotes
+import numpy as np
+
+
 def menu(funct):
     print("Wybierz metode całkowania numerycznego: ")
     print("1. Newtona-Cotesa opartą na trzech węzłach")
@@ -10,6 +14,7 @@ def menu(funct):
         interval_n = input()
         print("Podaj dokładność: ")
         epsilon = input()
+        Newton_Cotes.Simpson_method(float(epsilon), float(interval_0), float(interval_n), funct)
     elif method == "2":
         print()
 
@@ -19,8 +24,8 @@ def main():
     while (check):
         print("Wybierz funkcje: ")
         print("0. Wyjście")
-        print("1. ")
-        print("2. ")
+        print("1. sin(x)")
+        print("2. cos(x)")
         print("3. ")
         print("4. ")
         print("5. ")
@@ -28,9 +33,11 @@ def main():
         if choice == "0":
             check = False
         elif choice == "1":
-            funct = ""
+            funct = "np.sin(x)"
+            menu(funct)
         elif choice == "2":
-            funct = ""
+            funct = "np.cos(x)"
+            menu(funct)
 
         elif choice == "3":
             funct = ""
