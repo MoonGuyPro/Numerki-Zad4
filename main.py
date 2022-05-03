@@ -43,14 +43,13 @@ def main():
             print("Podaj funkcje: ")
             funct = input()
             menu(funct)
-        elif choice == "1":
+        elif choice == "2":
             funct = "np.cos(2*x)"
             menu(funct)
-
-        elif choice == "2":
+        elif choice == "3":
             funct = "x**2+3"
             menu(funct)
-        elif choice == "3":
+        elif choice == "4":
             funct = "np.log(x+3) * 4"
             menu(funct)
         else:
